@@ -1,0 +1,10 @@
+indexes on db columns
+testing/handling for:
+  * events that overlap midnight <- for now apply hours to start day
+  * events that overlap a DST-type change (handled automatically?)
+
+what about personal projects or projects for small clients with no sub projects? how to make that clean and easy?
+
+Desktop app:
+  * preferences:
+    * only allow one project to run at a time

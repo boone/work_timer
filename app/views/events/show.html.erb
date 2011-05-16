@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p><b>Client:</b> <%= @event.project.client.name rescue 'N/A' %></p>
+
+<p><b>Project:</b> <%= @event.project.title rescue 'N/A' %></p>
+
+<p>
+  <b>Start:</b>
+  <%= @event.start %>
+</p>
+
+<p>
+  <b>End:</b>
+  <%= @event.end %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%= @event.comment %>
+</p>
+
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>
