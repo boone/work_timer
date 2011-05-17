@@ -54,3 +54,5 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+table { border-spacing: 5px; }
