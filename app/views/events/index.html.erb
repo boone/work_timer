@@ -2,36 +2,32 @@
 
 <h2>Current Events</h2>
 
-<% if @current_events.size > 0 %>
+<% if current_events.size > 0 %>
   <table>
     <tr>
       <th>Client</th>
       <th>Project</th>
       <th>Start</th>
-      <th>Elapsed Time<br>(hours)</th>
+      <th>Time<br>(hours)</th>
       <th>Comment</th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
 
-  <% @current_events.each do |event| %>
+  <% current_events.each do |event| %>
     <tr>
       <td><%= event.project.client.name rescue 'N/A' %></td>
       <td><%= event.project.title rescue 'N/A' %></td>
       <td><%= event.start.to_s(:short) %></td>
-      <td><%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %></td>
-      <td><%= event.comment %></td>
+      <td style="text-align: right;"><%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %></td>
+      <td><%= truncate(event.comment, :length => 20, :separator => ' ') %></td>
       <td><%= link_to 'Show', event %></td>
-      <td><%= link_to 'Edit', edit_event_path(event) %></td>
-      <td><%= link_to 'Destroy', event, :confirm => 'Are you sure you want to delete this event?', :method => :delete %></td>
       <td><%= link_to 'Stop', stop_event_path(event), :confirm => 'Are you sure you want to stop this event?', :method => :put %></td>
     </tr>
   <% end %>
   </table>
 <% else %>
-  <p>No current events!</p>
+  <p>No current events. Start <%= link_to 'new event', new_event_path %>.</p>
 <% end %>
 
 <h2>Completed Events</h2>
@@ -43,10 +39,8 @@
       <th>Project</th>
       <th>Start</th>
       <th>End</th>
-      <th>Elapsed Time (hours)</th>
+      <th>Time (hours)</th>
       <th>Comment</th>
-      <th></th>
-      <th></th>
       <th></th>
       <th></th>
     </tr>
@@ -57,19 +51,14 @@
       <td><%= event.project.title rescue 'N/A' %></td>
       <td><%= event.start.to_s(:short) %></td>
       <td><%= event.end.to_s(:short) %></td>
-      <td><%= number_with_precision((event.end - event.start) / 3600, :precision => 2) %></td>
-      <td><%= event.comment %></td>
+      <td style="text-align: right;"><%= number_with_precision((event.end - event.start) / 3600, :precision => 2) %></td>
+      <td><%= truncate(event.comment, :length => 25, :separator => ' ') %></td>
       <td><%= link_to 'Show', event %></td>
-      <td><%= link_to 'Edit', edit_event_path(event) %></td>
-      <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
       <td><%= link_to 'Resume', resume_event_path(event), :confirm => 'Are you sure?', :method => :post %></td>
     </tr>
   <% end %>
   </table>
+  <%= paginate @completed_events %>
 <% else %>
-  <p>No current events!</p>
+  <p>No completed events!</p>
 <% end %>
-  
-<br />
-
-<%= link_to 'New Event', new_event_path %>
