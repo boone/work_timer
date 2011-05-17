@@ -46,7 +46,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to([@client, @project], :notice => 'Project was successfully created.') }
+        format.html { redirect_to(client_projects_url(@client), :notice => 'Project was successfully created.') }
         format.xml  { render :xml => @project, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
