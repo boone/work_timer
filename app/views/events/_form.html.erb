@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :project_id, 'Project' %><br />
-    <%= f.select :project_id, Project.all.collect {|p| [ "#{p.client.name}: #{p.title}", p.id ] }, { :include_blank => false } %>
+    <%= f.select :project_id, Project.all.collect {|p| [ "#{p.client.name}: #{p.title}", p.id ] }.sort, { :include_blank => false } %>
   </div>
 
   <div class="field">
