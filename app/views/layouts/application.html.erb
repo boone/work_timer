@@ -7,6 +7,10 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <% if flash[:notice] %>
+    <div class="flash"><%= flash[:notice] %></div>
+  <% end %>
+
   <% if current_events.size > 0 %>
     <table style="border: solid black 1px;">
       <tr>
