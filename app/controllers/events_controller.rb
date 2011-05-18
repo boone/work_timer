@@ -2,8 +2,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @current_events = Event.current
-    @completed_events = Event.completed
+    @completed_events = Event.completed.page(params[:page]).per(15)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +44,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to(@event, :notice => 'Event was successfully created.') }
+        format.html { redirect_to(events_url, :notice => 'Event was successfully created.') }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
