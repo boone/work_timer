@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WorkTimer</title>
+  <title>Work Timer</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <% if current_events.size > 0 %>
+    <table style="border: solid black 1px;">
+      <tr>
+        <th>Current Event</th>
+        <th>Start</th>
+        <th>Time<br>(hours)</th>
+        <th>Comment</th>
+        <th></th>
+      </tr>
+
+    <% current_events.each do |event| %>
+      <tr>
+        <td><%= link_to "#{event.id}", event %> <%= event.project.client.name rescue 'N/A' %>: <%= event.project.title rescue 'N/A' %></td>
+        <td><%= event.start.to_s(:short) %></td>
+        <td style="text-align: right;"><%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %></td>
+        <td><%= truncate(event.comment, :length => 20, :separator => ' ') %></td>
+        <td><%= link_to 'Stop', stop_event_path(event), :confirm => 'Are you sure you want to stop this event?', :method => :put %></td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
+  
+  <p>
+    <%= link_to 'New Event', new_event_path %> |
+    <%= link_to 'Events', events_path %> |
+    <%= link_to 'Clients', clients_path %>
+  </p>
 
 <%= yield %>
 
