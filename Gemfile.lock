@@ -61,6 +61,7 @@ GEM
       rake (>= 0.8.7)
       thor (~> 0.14.4)
     rake (0.8.7)
+    shoulda (2.11.3)
     sqlite3 (1.3.3)
     thor (0.14.6)
     treetop (1.4.9)
@@ -73,4 +74,5 @@ PLATFORMS
 DEPENDENCIES
   kaminari
   rails (= 3.0.7)
+  shoulda
   sqlite3

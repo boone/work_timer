@@ -4,6 +4,10 @@ gem 'rails', '3.0.7'
 gem 'sqlite3'
 gem 'kaminari'
 
+group :test do
+  gem 'shoulda'
+end
+
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
