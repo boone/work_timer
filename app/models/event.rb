@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :project
-  
+
+  default_scope order('start DESC')
   scope :current, where('end IS NULL').order('start DESC')
   scope :completed, where('end IS NOT NULL').order('end DESC')
   
