@@ -1,9 +1,37 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @project.title %>
-</p>
+<h1><%= @project.client.name %>: <%= @project.title %></h1>
+
+<h2>Recent Events</h2>
+
+<% if @events.size > 0 %>
+  <table>
+    <tr>
+      <th>Project</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Time (hours)</th>
+      <th>Comment</th>
+      <th></th>
+    </tr>
+
+  <% @events.each do |event| %>
+    <tr>
+      <td><%= event.project.title rescue 'N/A' %></td>
+      <td><%= event.start.to_s(:short) %></td>
+      <td><% if !event.end.nil? %><%= event.end.to_s(:short) %><% else %>Ongoing<% end %></td>
+      <td class="hours">
+        <% end_time = event.end || Time.now %>
+        <%= number_with_precision((end_time - event.start) / 3600, :precision => 2) %>
+      </td>
+      <td><%= truncate(event.comment, :length => 25, :separator => ' ') %></td>
+      <td><%= link_to 'Show', event %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p>No recent events!</p>
+<% end %>
 
 <%= link_to 'Edit', edit_client_project_path(@client, @project) %> |
 <%= link_to 'Back', client_projects_path(@client) %>

@@ -14,6 +14,7 @@ class ClientsController < ApplicationController
   # GET /clients/1.xml
   def show
     @client = Client.find(params[:id])
+    @events = @client.events.limit(15)
 
     respond_to do |format|
       format.html # show.html.erb

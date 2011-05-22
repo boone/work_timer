@@ -16,6 +16,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     @project = @client.projects.find(params[:id])
+    @events = @project.events.limit(15)
 
     respond_to do |format|
       format.html # show.html.erb
