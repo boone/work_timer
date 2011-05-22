@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @client.name %>
-</p>
+<h1><%= @client.name %></h1>
 
 <h2>Recent Events</h2>
 
@@ -20,7 +17,7 @@
 
   <% @events.each do |event| %>
     <tr>
-      <td><%= event.project.title rescue 'N/A' %></td>
+      <td><%= link_to event.project.title, [event.project.client, event.project] %></td>
       <td><%= event.start.to_s(:short) %></td>
       <td><% if !event.end.nil? %><%= event.end.to_s(:short) %><% else %>Ongoing<% end %></td>
       <td class="hours">
