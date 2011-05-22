@@ -19,7 +19,7 @@
       <td><%= event.project.client.name rescue 'N/A' %></td>
       <td><%= event.project.title rescue 'N/A' %></td>
       <td><%= event.start.to_s(:short) %></td>
-      <td style="text-align: right;"><%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %></td>
+      <td class="hours"><%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %></td>
       <td><%= truncate(event.comment, :length => 20, :separator => ' ') %></td>
       <td><%= link_to 'Show', event %></td>
       <td><%= link_to 'Stop', stop_event_path(event), :confirm => 'Are you sure you want to stop this event?', :method => :put %></td>
@@ -51,7 +51,7 @@
       <td><%= event.project.title rescue 'N/A' %></td>
       <td><%= event.start.to_s(:short) %></td>
       <td><%= event.end.to_s(:short) %></td>
-      <td style="text-align: right;"><%= number_with_precision((event.end - event.start) / 3600, :precision => 2) %></td>
+      <td class="hours"><%= number_with_precision((event.end - event.start) / 3600, :precision => 2) %></td>
       <td><%= truncate(event.comment, :length => 25, :separator => ' ') %></td>
       <td><%= link_to 'Show', event %></td>
       <td><%= link_to 'Resume', resume_event_path(event), :confirm => 'Are you sure?', :method => :post %></td>
