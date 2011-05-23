@@ -7,7 +7,10 @@ WorkTimer::Application.routes.draw do
   end
 
   resources :clients do
-    resources :projects
+    resources :projects do
+      resource :report, :only => :show
+    end
+    resource :report, :only => :show
   end
 
   # The priority is based upon order of creation:

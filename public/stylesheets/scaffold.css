@@ -57,4 +57,4 @@ div.field, div.actions {
 
 table { border-spacing: 5px; }
 .flash { color: green; }
-td.hours { text-align: right; }
+th.hours, td.hours { text-align: right; }

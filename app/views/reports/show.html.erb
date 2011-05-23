@@ -1,0 +1,48 @@
+<h1><%= @client.name%> Report</h1>
+
+<h2><%= @start_date.to_s(:long) %> to <%= @end_date.to_s(:long) %></h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Project</th>
+      <% @date_range.each do |day| %>
+        <th>
+          <%= day.strftime('%a') %><br>
+          <%= day.strftime('%b %d') %>
+        </th>
+      <% end %>
+      <th>Totals</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>Totals</th>
+      <% @date_range.each do |day| %>
+        <td class="hours">
+          <% if @report['totals']["#{day.to_s}"] %>
+            <%= number_with_precision(@report['totals']["#{day.to_s}"] / 3600, :precision => 2) %>
+          <% end %>
+        </td>
+      <% end %>
+      <th class="hours"><%= number_with_precision(@report['totals'].values.inject(:+) / 3600, :precision => 2)%></th>
+      </tr>
+  </tfoot>
+  <tbody>
+    <% @projects.each do |project| %>
+      <% if @report[project.id] %>
+        <tr>
+          <th><%= project.title %></th>
+          <% @date_range.each do |day| %>
+            <td class="hours">
+              <% if @report[project.id]["#{day.to_s}"] %>
+                <%= number_with_precision(@report[project.id]["#{day.to_s}"] / 3600, :precision => 2) %>
+              <% end %>
+            </td>
+          <% end %>
+          <th class="hours"><%= number_with_precision(@report[project.id].values.inject(:+) / 3600, :precision => 2) %></th>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
