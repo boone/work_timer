@@ -2,6 +2,9 @@
 
 <h1><%= @client.name %></h1>
 
+<p>Reports: <%= link_to 'Weekly', client_report_path(@client, :grouping => 'week')%> | 
+<%= link_to 'Monthly', client_report_path(@client, :grouping => 'month')%></p>
+
 <h2>Recent Events</h2>
 
 <% if @events.size > 0 %>

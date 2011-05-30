@@ -8,14 +8,21 @@ class ReportsController < ApplicationController
 
     @projects = @client.projects
 
-    start_time = 1.hour.ago.beginning_of_week #Time.now.beginning_of_week
-    end_time = 1.hour.ago.end_of_week #Time.now.beginning_of_week
-    #end_time   = Time.now.end_of_week
+    @grouping = params[:grouping] =~ /\A(week|month)\z/ ? params[:grouping] : 'week' # default to week
+    
+    target_date = Date.parse(params[:date]) rescue nil if params[:date]
+    target_date ||= Date.today
+
+    start_time = target_date.to_time.send("beginning_of_#{@grouping}")
+    end_time = target_date.to_time.send("end_of_#{@grouping}")
 
     @start_date = start_time.to_date
     @end_date   = end_time.to_date
 
     @date_range = @start_date..@end_date
+
+    @next_range = @start_date + 1.send(@grouping)
+    @previous_range = @start_date - 1.send(@grouping)
     
     @report = {}
     
