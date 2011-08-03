@@ -27,4 +27,8 @@ class Event < ActiveRecord::Base
       false
     end
   end
+  
+  def expanded_title
+    "#{self.project.client.name}: #{self.project.title}"
+  end
 end
