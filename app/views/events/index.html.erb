@@ -1,45 +1,13 @@
-<h1>Work Events</h1>
-
-<h2>Current Events</h2>
-
-<% if current_events.size > 0 %>
-  <table>
-    <tr>
-      <th>Client</th>
-      <th>Project</th>
-      <th>Start</th>
-      <th>Time<br>(hours)</th>
-      <th>Comment</th>
-      <th></th>
-      <th></th>
-    </tr>
-
-  <% current_events.each do |event| %>
-    <tr>
-      <td><%= event.project.client.name rescue 'N/A' %></td>
-      <td><%= event.project.title rescue 'N/A' %></td>
-      <td><%= event.start.to_s(:short) %></td>
-      <td class="hours"><%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %></td>
-      <td><%= truncate(event.comment, :length => 20, :separator => ' ') %></td>
-      <td><%= link_to 'Show', event %></td>
-      <td><%= link_to 'Stop', stop_event_path(event), :confirm => 'Are you sure you want to stop this event?', :method => :put %></td>
-    </tr>
-  <% end %>
-  </table>
-<% else %>
-  <p>No current events. Start <%= link_to 'new event', new_event_path %>.</p>
-<% end %>
-
-<h2>Completed Events</h2>
+<h1>Completed Events</h1>
 
 <% if @completed_events.size > 0 %>
   <table>
     <tr>
-      <th>Client</th>
-      <th>Project</th>
+      <th>Event</th>
+      <th>Date</th>
       <th>Start</th>
       <th>End</th>
-      <th>Time (hours)</th>
+      <th>Hours</th>
       <th>Comment</th>
       <th></th>
       <th></th>
@@ -47,13 +15,12 @@
 
   <% @completed_events.each do |event| %>
     <tr>
-      <td><%= event.project.client.name rescue 'N/A' %></td>
-      <td><%= event.project.title rescue 'N/A' %></td>
-      <td><%= event.start.to_s(:short) %></td>
-      <td><%= event.end.to_s(:short) %></td>
+      <td><%= link_to "#{event.project.client.name}: #{event.project.title}", event %></td>
+      <td><%= event.start.strftime('%a, %b %d') %></td>
+      <td><%= event.start.strftime('%H:%M') %></td>
+      <td><%= event.end.strftime('%H:%M') %></td>
       <td class="hours"><%= number_with_precision((event.end - event.start) / 3600, :precision => 2) %></td>
       <td><%= truncate(event.comment, :length => 25, :separator => ' ') %></td>
-      <td><%= link_to 'Show', event %></td>
       <td><%= link_to 'Resume', resume_event_path(event), :confirm => 'Are you sure?', :method => :post %></td>
     </tr>
   <% end %>

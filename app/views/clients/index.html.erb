@@ -3,18 +3,11 @@
 <table>
   <tr>
     <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @clients.each do |client| %>
   <tr>
-    <td><%= client.name %></td>
-    <td><%= link_to 'Projects', client_projects_path(client) %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to client.name, client %></td>
   </tr>
 <% end %>
 </table>

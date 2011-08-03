@@ -1,0 +1,23 @@
+body { background-color: #333; color: #fff; }
+/*
+a { color: #fff; text-decoration: none; }
+a:visited { color: #fff;}
+a:hover { text-decoration: underline; background-color: transparent; }
+*/
+#status, #content, #flash { background-color: #ddd; width: 700px; color: #000; padding: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+#status { height: 65px; font-size: 14px; }
+#flash { color: green; margin-bottom: 10px; }
+.running_time { width: 150px; text-align: center; padding: 0 10px 0 10px; margin: 0; float: left; }
+.start_stop { padding: 0 0 5px 0; margin: 0; }
+.time { font-size: 40px; line-height: 42px; }
+.info { float: left; overflow: hidden; width: 520px; padding: 5px 10px 5px 0; white-space: nowrap; }
+h1 { font-size: 20px; }
+h2 { font-size: 17px; }
+#footer { font-size: 10px; color: #ddd; padding: 10px;}
+#footer a { color: #ddd; }
+#footer a:visted { color: #eee; }
+#footer a:hover { color: #ddd; }
+#menu { font-size: 14px; color: #ddd; padding: 10px;}
+#menu a { color: #ddd; }
+#menu a:visted { color: #eee; }
+#menu a:hover { color: #ddd; }

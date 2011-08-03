@@ -1,19 +1,13 @@
-<h1>Projects for <%= @client.name %></h1>
+<h1>Projects for <%= link_to @client.name, @client %></h1>
 
 <table>
   <tr>
     <th>Title</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.title %></td>
-    <td><%= link_to 'Show', client_project_path(@client, project) %></td>
-    <td><%= link_to 'Edit', edit_client_project_path(@client, project) %></td>
-    <td><%= link_to 'Destroy', client_project_path(@client, project), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to project.title, [@client, project] %></td>
   </tr>
 <% end %>
 </table>

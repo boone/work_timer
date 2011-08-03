@@ -1,9 +1,10 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= @client.name %></h1>
 
-<p>Reports: <%= link_to 'Weekly', client_report_path(@client, :grouping => 'week')%> | 
-<%= link_to 'Monthly', client_report_path(@client, :grouping => 'month')%></p>
+<p>
+  <%= link_to 'Projects', client_projects_path(@client) %> &middot;
+  Reports: <%= link_to 'Weekly', client_report_path(@client, :grouping => 'week')%> &middot;
+  <%= link_to 'Monthly', client_report_path(@client, :grouping => 'month')%>
+</p>
 
 <h2>Recent Events</h2>
 
@@ -13,7 +14,7 @@
       <th>Project</th>
       <th>Start</th>
       <th>End</th>
-      <th>Time (hours)</th>
+      <th>Hours</th>
       <th>Comment</th>
       <th></th>
     </tr>

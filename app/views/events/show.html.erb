@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %></p>
+<h1>Event Details</h1>
 
-<p><b>Client:</b> <%= @event.project.client.name rescue 'N/A' %></p>
+<p><b>Client:</b> <%= link_to @event.project.client.name, @event.project.client %></p>
 
-<p><b>Project:</b> <%= @event.project.title rescue 'N/A' %></p>
+<p><b>Project:</b> <%= link_to @event.project.title, client_project_path(@event.project.client, @event.project) %></p>
 
 <p>
   <b>Start:</b>
@@ -15,7 +15,7 @@
 </p>
 
 <p>
-  <b>Time (hours):</b>
+  <b>Hours:</b>
   <%= number_with_precision((@event.end - @event.start) / 3600, :precision => 2) %>
 </p>
 
