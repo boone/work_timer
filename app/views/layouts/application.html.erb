@@ -12,35 +12,7 @@
   <% end %>
 
   <div id="status">
-    <% if current_events.size > 0 %>
-      <% current_events.each do |event| %>
-        <div class="running_time">
-          <div class="start_stop">
-            <%= link_to 'Stop', stop_event_path(event), :confirm => 'Are you sure you want to stop this event?', :method => :put %>
-          </div>
-          <div class="time">
-            <%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %>
-          </div>
-        </div>
-        <div class="info">
-          <strong><%= link_to event.expanded_title, event %></strong><br />
-          <strong>Started:</strong> <%= event.start.strftime('%H:%M') %><br />
-          <strong>Comment:</strong> <%= truncate(event.comment, :length => 30, :separator => ' ') %>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="running_time">
-        <div class="start_stop">
-          <%= link_to 'New Event', new_event_path %>
-        </div>
-        <div class="time">
-          0.00
-        </div>
-      </div>
-      <div class="info">
-        <strong>Clock Stopped</strong>
-      </div>
-    <% end %>
+    <%= render 'events/current', :current_events => current_events %>
   </div>
   
   <div id="menu">

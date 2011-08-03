@@ -1,5 +1,8 @@
 WorkTimer::Application.routes.draw do
   resources :events do
+    collection do
+      get 'current'
+    end
     member do
       put 'stop'
       post 'resume'
