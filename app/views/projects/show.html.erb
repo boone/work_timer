@@ -16,7 +16,7 @@
     </tr>
 
   <% @events.each do |event| %>
-    <tr>
+    <tr class="<%= cycle('odd', 'even') %>">
       <td><%= event.project.title rescue 'N/A' %></td>
       <td><%= event.start.to_s(:short) %></td>
       <td><% if !event.end.nil? %><%= event.end.to_s(:short) %><% else %>Ongoing<% end %></td>

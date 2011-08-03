@@ -20,7 +20,7 @@
     </tr>
 
   <% @events.each do |event| %>
-    <tr>
+    <tr class="<%= cycle('odd', 'even') %>">
       <td><%= link_to event.project.title, [event.project.client, event.project] %></td>
       <td><%= event.start.to_s(:short) %></td>
       <td><% if !event.end.nil? %><%= event.end.to_s(:short) %><% else %>Ongoing<% end %></td>

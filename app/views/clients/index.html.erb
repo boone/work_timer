@@ -6,7 +6,7 @@
   </tr>
 
 <% @clients.each do |client| %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even') %>">
     <td><%= link_to client.name, client %></td>
   </tr>
 <% end %>

@@ -21,3 +21,7 @@ h2 { font-size: 17px; }
 #menu a { color: #ddd; }
 #menu a:visted { color: #eee; }
 #menu a:hover { color: #ddd; }
+table { border-collapse: collapse; }
+td { padding: 3px; }
+tr.even { background-color: #ccc; }
+tr.odd { background-color: #bbb; }

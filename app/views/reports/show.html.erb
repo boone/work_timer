@@ -42,7 +42,7 @@
     <tbody>
       <% @projects.each do |project| %>
         <% if @report[project.id] %>
-          <tr>
+          <tr class="<%= cycle('odd', 'even') %>">
             <th><%= project.title %></th>
             <% @date_range.each do |day| %>
               <td class="hours">

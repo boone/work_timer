@@ -14,7 +14,7 @@
     </tr>
 
   <% @completed_events.each do |event| %>
-    <tr>
+    <tr class="<%= cycle('odd', 'even') %>">
       <td><%= link_to "#{event.project.client.name}: #{event.project.title}", event %></td>
       <td><%= event.start.strftime('%a, %b %d') %></td>
       <td><%= event.start.strftime('%H:%M') %></td>
