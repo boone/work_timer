@@ -6,6 +6,15 @@ class Event < ActiveRecord::Base
   scope :completed, where('end IS NOT NULL').order('end DESC')
   
   validates_presence_of :project
+  validates_presence_of :start
+
+  validate :check_start_and_end
+
+  def check_start_and_end
+    if self.end.present?
+      errors.add(:end, 'must come after the start time') if self.end.present? && self.end < self.start
+    end
+  end
   
   def stop!
     if self.end.nil?
