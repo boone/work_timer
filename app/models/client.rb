@@ -1,5 +1,5 @@
 class Client < ActiveRecord::Base
-  has_many :projects
+  has_many :projects, :dependent => :restrict
   has_many :events, :through => :projects
   
   default_scope order('LOWER(name) ASC')

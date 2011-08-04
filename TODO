@@ -1,9 +1,11 @@
-* don't allow deletion of clients/projects if event data exists
-* limit users to one active event or allow parallel (make an option?)
+* handling of unverified request?
+* Github-style page sliding when changing pages?
+* Monthly Report takes up too much width
 
 * indexes on db columns
 * testing/handling for:
 	* events that overlap midnight <- for now apply hours to start day
   * events that overlap a DST-type change (handled automatically?)
 
+* limit users to one active event or allow parallel (make an option?)
 * what about personal projects or projects for small clients with no sub projects? how to make that clean and easy?

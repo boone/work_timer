@@ -7,6 +7,7 @@ gem 'kaminari'
 
 group :test do
   gem 'shoulda'
+	gem 'factory_girl_rails'
 end
 
 # Bundle gems for the local environment. Make sure to
