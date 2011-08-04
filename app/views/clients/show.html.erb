@@ -1,9 +1,13 @@
+<%= link_to 'Clients', clients_path %> &raquo;
+
 <h1><%= @client.name %></h1>
 
 <p>
+  <%= link_to 'Edit Info', edit_client_path(@client) %> &middot;
   <%= link_to 'Projects', client_projects_path(@client) %> &middot;
-  Reports: <%= link_to 'Weekly', client_report_path(@client, :grouping => 'week')%> &middot;
-  <%= link_to 'Monthly', client_report_path(@client, :grouping => 'month')%>
+  Reports: <%= link_to 'Weekly', client_report_path(@client, :grouping => 'week')%> /
+  <%= link_to 'Monthly', client_report_path(@client, :grouping => 'month')%> &middot;
+  <%= link_to 'Delete', @client, :method => :delete, :confirm => 'Are you sure?' %>
 </p>
 
 <h2>Recent Events</h2>
@@ -36,6 +40,3 @@
 <% else %>
   <p>No recent events!</p>
 <% end %>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>

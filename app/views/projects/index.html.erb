@@ -1,4 +1,9 @@
-<h1>Projects for <%= link_to @client.name, @client %></h1>
+<%= link_to 'Clients', clients_path %> &raquo;
+<%= link_to @client.name, @client %> &raquo;
+
+<h1>Projects</h1>
+
+<p><%= link_to 'New', new_client_project_path(@client) %></p>
 
 <table>
   <tr>
@@ -12,6 +17,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Project', new_client_project_path(@client) %>

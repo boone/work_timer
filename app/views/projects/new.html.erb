@@ -1,5 +1,7 @@
-<h1>New project</h1>
+<%= link_to 'Clients', clients_path %> &raquo;
+<%= link_to @client.name, @client %> &raquo;
+<%= link_to 'Projects', client_projects_path(@client) %> &raquo;
+
+<h1>New Project</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', client_projects_path(@client) %>

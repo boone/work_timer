@@ -1,4 +1,11 @@
+<%= link_to 'Events', events_path %> &raquo;
+
 <h1>Event Details</h1>
+
+<p>
+  <%= link_to 'Edit', edit_event_path(@event) %> &middot;
+  <%= link_to 'Delete', @event, :method => :delete, :confirm => 'Are you sure?' %>
+</p>
 
 <p><b>Client:</b> <%= link_to @event.project.client.name, @event.project.client %></p>
 
@@ -11,20 +18,23 @@
 
 <p>
   <b>End:</b>
-  <%= @event.end %>
+  <% if @event.end.present? %>
+    <%= @event.end %>
+  <% else %>
+    Ongoing
+  <% end %>
 </p>
 
 <p>
   <b>Hours:</b>
-  <%= number_with_precision((@event.end - @event.start) / 3600, :precision => 2) %>
+  <% if @event.end.present? %>
+    <%= number_with_precision((@event.end - @event.start) / 3600, :precision => 2) %>
+  <% else %>
+    <%= number_with_precision((Time.now - @event.start) / 3600, :precision => 2) %>
+  <% end %>
 </p>
 
 <p>
   <b>Comment:</b>
   <%= @event.comment %>
 </p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Delete', @event, :method => :delete, :confirm => 'Are you sure?' %> |
-<%= link_to 'Back', events_path %>

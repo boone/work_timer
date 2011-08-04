@@ -1,6 +1,8 @@
-<h1>Editing project</h1>
+<%= link_to 'Clients', clients_path %> &raquo;
+<%= link_to @client.name, @client %> &raquo;
+<%= link_to 'Projects', client_projects_path(@client) %> &raquo;
+<%= link_to @project.title, client_project_path(@client, @project) %> &raquo;
+
+<h1>Edit Project</h1>
 
 <%= render 'form' %>
-
-<%= link_to 'Show', client_project_path(@client, @project) %> |
-<%= link_to 'Back', client_projects_path(@client) %>

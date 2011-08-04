@@ -1,6 +1,13 @@
-<p id="notice"><%= notice %></p>
+<%= link_to 'Clients', clients_path %> &raquo;
+<%= link_to @client.name, @client %> &raquo;
+<%= link_to 'Projects', client_projects_path(@client) %> &raquo;
 
-<h1><%= @project.client.name %>: <%= @project.title %></h1>
+<h1><%= @project.title %></h1>
+
+<p>
+  <%= link_to 'Edit Info', edit_client_project_path(@client, @project) %> &middot;
+  <%= link_to 'Delete', client_project_path(@client, @project), :method => :delete, :confirm => 'Are you sure?' %>
+</p>
 
 <h2>Recent Events</h2>
 
@@ -33,5 +40,3 @@
   <p>No recent events!</p>
 <% end %>
 
-<%= link_to 'Edit', edit_client_project_path(@client, @project) %> |
-<%= link_to 'Back', client_projects_path(@client) %>

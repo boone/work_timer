@@ -5,6 +5,7 @@ a:visited { color: #fff;}
 a:hover { text-decoration: underline; background-color: transparent; }
 */
 #status, #content, #flash { background-color: #ddd; width: 700px; color: #000; padding: 10px; -moz-border-radius: 10px; border-radius: 10px; }
+#content { padding-top: 15px; padding-bottom: 15px; }
 #status { height: 65px; font-size: 14px; }
 #flash { color: green; margin-bottom: 10px; }
 .running_time { width: 150px; text-align: center; padding: 0 10px 0 10px; margin: 0; float: left; }
