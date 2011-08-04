@@ -2,14 +2,18 @@
 
 <p><%= link_to 'New', new_client_path %></p>
 
-<table>
-  <tr>
-    <th>Name</th>
-  </tr>
+<% if @clients.size > 0 %>
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
 
-<% @clients.each do |client| %>
-  <tr class="<%= cycle('odd', 'even') %>">
-    <td><%= link_to client.name, client %></td>
-  </tr>
+  <% @clients.each do |client| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= link_to client.name, client %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p>No existing clients!</p>
 <% end %>
-</table>

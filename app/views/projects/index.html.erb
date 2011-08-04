@@ -5,15 +5,18 @@
 
 <p><%= link_to 'New', new_client_project_path(@client) %></p>
 
-<table>
-  <tr>
-    <th>Title</th>
-  </tr>
+<% if @projects.size > 0 %>
+  <table>
+    <tr>
+      <th>Title</th>
+    </tr>
 
-<% @projects.each do |project| %>
-  <tr class="<%= cycle('odd', 'even') %>">
-    <td><%= link_to project.title, [@client, project] %></td>
-  </tr>
+  <% @projects.each do |project| %>
+    <tr class="<%= cycle('odd', 'even') %>">
+      <td><%= link_to project.title, [@client, project] %></td>
+    </tr>
+  <% end %>
+  </table>
+<% else %>
+  <p>No existing projects!</p>
 <% end %>
-</table>
-
