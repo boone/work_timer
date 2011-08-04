@@ -5,8 +5,10 @@
 <h1><%= @project.title %></h1>
 
 <p>
-  <%= link_to 'Edit Info', edit_client_project_path(@client, @project) %> &middot;
-  <%= link_to 'Delete', client_project_path(@client, @project), :method => :delete, :confirm => 'Are you sure?' %>
+  <%= link_to 'Edit Info', edit_client_project_path(@client, @project) %>
+  <% if @project.events.size == 0 %>
+    &middot; <%= link_to 'Delete', client_project_path(@client, @project), :method => :delete, :confirm => 'Are you sure?' %>
+  <% end %>
 </p>
 
 <h2>Recent Events</h2>

@@ -74,11 +74,17 @@ class ClientsController < ApplicationController
   # DELETE /clients/1.xml
   def destroy
     @client = Client.find(params[:id])
-    @client.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(clients_url) }
-      format.xml  { head :ok }
+    begin
+      @client.destroy
+
+      respond_to do |format|
+        format.html { redirect_to(clients_url) }
+        format.xml  { head :ok }
+      end
+    rescue Exception => e
+      # could handle ActiveRecord::DeleteRestrictionError specially, but the error message is fine
+      redirect_to @client, :notice => "#{e}."
     end
   end
 end

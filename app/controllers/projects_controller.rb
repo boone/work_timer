@@ -76,11 +76,17 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.xml
   def destroy
     @project = @client.projects.find(params[:id])
-    @project.destroy
 
-    respond_to do |format|
-      format.html { redirect_to(client_projects_url(@client)) }
-      format.xml  { head :ok }
+    begin
+      @project.destroy
+
+      respond_to do |format|
+        format.html { redirect_to(client_projects_url(@client)) }
+        format.xml  { head :ok }
+      end
+    rescue Exception => e
+      # could handle ActiveRecord::DeleteRestrictionError specially, but the error message is fine
+      redirect_to client_project_path(@client, @project), :notice => "#{e}."
     end
   end
   
