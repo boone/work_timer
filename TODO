@@ -1,7 +1,6 @@
 * Github-style page sliding when changing pages?
 * Monthly Report takes up too much width
 
-* indexes on db columns
 * testing/handling for:
 	* events that overlap midnight <- for now apply hours to start day
   * events that overlap a DST-type change (handled automatically?)
