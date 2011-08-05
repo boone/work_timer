@@ -82,4 +82,13 @@ class MainTest < ActionController::IntegrationTest
     assert page.has_content?('Event stopped.')
   end
 
+  should 'only allow one current event' do
+    current_event = Factory.create(:event, :end => nil)
+    
+    visit new_event_path
+    fill_in 'Comment', :with => 'Second running event'
+    click_button 'Create Event'
+    assert page.has_content?('Cannot start a new current event while another is running')
+  end
+
 end

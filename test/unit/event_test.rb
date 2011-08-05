@@ -15,4 +15,11 @@ class EventTest < ActiveSupport::TestCase
     assert !event.valid?
     assert event.errors[:end]
   end
+  
+  should 'not allow multiple current events' do
+    current_event = Factory.build(:event, :end => nil)
+    event = Event.new(:start => Time.now, :comment => 'Second event')
+    assert !event.valid?
+    assert event.errors[:base]
+  end
 end

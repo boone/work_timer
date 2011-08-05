@@ -1,5 +1,3 @@
-* limit users to one active event (programmatically, plus remove resume links)
-
 * testing/handling for:
 	* events that overlap midnight <- for now apply hours to start day
   * events that overlap a DST-type change (handled automatically?)

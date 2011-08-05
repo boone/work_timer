@@ -107,7 +107,7 @@ class EventsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to(events_url, :notice => 'Unable to resume event.') }
+        format.html { redirect_to(events_url, :notice => 'Unable to resume event. Is another event currently running?') }
         #format.xml  { head :ok }
       end
     end

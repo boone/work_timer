@@ -9,11 +9,16 @@ class Event < ActiveRecord::Base
   validates_presence_of :start
 
   validate :check_start_and_end
+  validate :only_one_current_event, :on => :create
 
   def check_start_and_end
     if self.end.present?
       errors.add(:end, 'must come after the start time') if self.end.present? && self.end < self.start
     end
+  end
+  
+  def only_one_current_event
+    errors.add(:base, 'Cannot start a new current event while another is running') if Event.current.size > 0
   end
   
   def stop!

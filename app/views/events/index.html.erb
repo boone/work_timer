@@ -21,7 +21,7 @@
       <td><%= event.end.strftime('%H:%M') %></td>
       <td class="hours"><%= number_with_precision((event.end - event.start) / 3600, :precision => 2) %></td>
       <td><%= truncate(event.comment, :length => 25, :separator => ' ') %></td>
-      <td><%= link_to 'Resume', resume_event_path(event), :confirm => 'Are you sure?', :method => :post %></td>
+      <td><% if current_events.size == 0 %><%= link_to 'Resume', resume_event_path(event), :confirm => 'Are you sure?', :method => :post %><% end %></td>
     </tr>
   <% end %>
   </table>
