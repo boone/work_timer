@@ -81,7 +81,7 @@ class ProjectsController < ApplicationController
       @project.destroy
 
       respond_to do |format|
-        format.html { redirect_to(client_projects_url(@client)) }
+        format.html { redirect_to(client_projects_url(@client), :notice => 'Project was deleted.') }
         format.xml  { head :ok }
       end
     rescue Exception => e

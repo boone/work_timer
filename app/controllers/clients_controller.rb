@@ -79,7 +79,7 @@ class ClientsController < ApplicationController
       @client.destroy
 
       respond_to do |format|
-        format.html { redirect_to(clients_url) }
+        format.html { redirect_to(clients_url, :notice => 'Client was deleted.') }
         format.xml  { head :ok }
       end
     rescue Exception => e
