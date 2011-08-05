@@ -1,5 +1,4 @@
 * limit users to one active event (programmatically, plus remove resume links)
-* Monthly Report takes up too much width
 
 * testing/handling for:
 	* events that overlap midnight <- for now apply hours to start day

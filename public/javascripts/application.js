@@ -9,4 +9,8 @@ $(function() {
       $('#flash').slideUp();
     }, 10000);
   }
+  
+  $('#exclude').click(function() {
+    $('#report').find('.no_data').toggle();
+  });
 });

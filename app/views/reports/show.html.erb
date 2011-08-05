@@ -12,13 +12,16 @@
   <% end %>
 </p>
 
+<input type="checkbox" id="exclude" checked="checked" /> <label for="exclude">Exclude dates with no hours</label>
+
+<div id="report">
 <% if @report.size > 1 %>
   <table border="1">
     <thead>
       <tr>
         <th>Project</th>
         <% @date_range.each do |day| %>
-          <th>
+          <th<% unless @report['totals']["#{day.to_s}"] %> class="no_data"<% end %>>
             <%= day.strftime('%a') %><br>
             <%= day.strftime('%b %d') %>
           </th>
@@ -30,7 +33,7 @@
       <tr>
         <th>Totals</th>
         <% @date_range.each do |day| %>
-          <td class="hours">
+          <td class="hours<% unless @report['totals']["#{day.to_s}"] %> no_data<% end %>">
             <% if @report['totals']["#{day.to_s}"] %>
               <%= number_with_precision(@report['totals']["#{day.to_s}"] / 3600, :precision => 2) %>
             <% end %>
@@ -45,10 +48,10 @@
           <tr class="<%= cycle('odd', 'even') %>">
             <th><%= project.title %></th>
             <% @date_range.each do |day| %>
-              <td class="hours">
+              <td class="hours<% unless @report['totals']["#{day.to_s}"] %> no_data<% end %>">
                 <% if @report[project.id]["#{day.to_s}"] %>
                   <%= number_with_precision(@report[project.id]["#{day.to_s}"] / 3600, :precision => 2) %>
-                <% end %>
+                  <% end %>
               </td>
             <% end %>
             <th class="hours"><%= number_with_precision(@report[project.id].values.inject(:+) / 3600, :precision => 2) %></th>
@@ -60,3 +63,4 @@
 <% else %>
   <p>No data for this time period.</p>
 <% end %>
+</div>
