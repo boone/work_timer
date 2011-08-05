@@ -86,7 +86,7 @@ class ProjectsController < ApplicationController
       end
     rescue Exception => e
       # could handle ActiveRecord::DeleteRestrictionError specially, but the error message is fine
-      redirect_to client_project_path(@client, @project), :notice => "#{e}."
+      redirect_to client_project_url(@client, @project), :notice => "#{e}."
     end
   end
   
