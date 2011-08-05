@@ -1,9 +1,9 @@
-* Github-style page sliding when changing pages?
+* limit users to one active event (programmatically, plus remove resume links)
 * Monthly Report takes up too much width
 
 * testing/handling for:
 	* events that overlap midnight <- for now apply hours to start day
   * events that overlap a DST-type change (handled automatically?)
 
-* limit users to one active event or allow parallel (make an option?)
+* Github-style page sliding when changing pages?
 * what about personal projects or projects for small clients with no sub projects? how to make that clean and easy?
