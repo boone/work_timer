@@ -2,15 +2,15 @@
 
 <h1><%= @client.name %></h1>
 
-<p>
-  <%= link_to 'Edit Info', edit_client_path(@client) %> &middot;
-  <%= link_to 'Projects', client_projects_path(@client) %> &middot;
-  Reports: <%= link_to 'Weekly', client_report_path(@client, :grouping => 'week')%> /
-  <%= link_to 'Monthly', client_report_path(@client, :grouping => 'month')%>
+<ul class="menu">
+  <li><%= link_to 'Edit Info', edit_client_path(@client) %></li>
+  <li><%= link_to 'Projects', client_projects_path(@client) %></li>
+  <li>Reports: <%= link_to 'Weekly', client_report_path(@client, :grouping => 'week')%> /
+  <%= link_to 'Monthly', client_report_path(@client, :grouping => 'month')%></li>
   <% if @client.projects.size == 0 %>
-    &middot; <%= link_to 'Delete', @client, :method => :delete, :confirm => 'Are you sure?' %>
+    <li><%= link_to 'Delete', @client, :method => :delete, :confirm => 'Are you sure?' %></li>
   <% end %>
-</p>
+</ul>
 
 <h2>Recent Events</h2>
 

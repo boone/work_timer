@@ -14,14 +14,18 @@ a:hover { text-decoration: underline; background-color: transparent; }
 .info { float: left; overflow: hidden; width: 520px; padding: 5px 10px 5px 0; white-space: nowrap; }
 h1 { font-size: 20px; }
 h2 { font-size: 17px; }
-#footer { font-size: 10px; color: #ddd; padding: 10px;}
+#footer { font-size: 10px; color: #ddd; padding: 0 10px;}
 #footer a { color: #ddd; }
 #footer a:visted { color: #eee; }
 #footer a:hover { color: #ddd; }
-#menu { font-size: 14px; color: #ddd; padding: 10px;}
-#menu a { color: #ddd; }
-#menu a:visted { color: #eee; }
-#menu a:hover { color: #ddd; }
+#main { font-size: 14px; color: #ddd; padding: 10px;}
+#main a { color: #ddd; }
+#main a:visted { color: #eee; }
+#main a:hover { color: #ddd; }
+.menu { list-style-type: none; padding: 0; }
+.menu li { display: inline; }
+.menu li:before { content: " · "; }
+.menu li:first-child:before { content: normal; }
 table { border-collapse: collapse; }
 td { padding: 3px; }
 tr.even { background-color: #ccc; }

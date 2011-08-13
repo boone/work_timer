@@ -15,21 +15,21 @@
     <%= render 'events/current', :current_events => current_events %>
   </div>
   
-  <div id="menu">
-    <%= link_to 'Events', events_path %> &middot;
-    <%= link_to 'Clients', clients_path %>
-  </div>
+  <ul id="main" class="menu">
+    <li><%= link_to 'Events', events_path %></li>
+    <li><%= link_to 'Clients', clients_path %></li>
+  </ul>
 
   <div id="content">
     <%= yield %>
   </div>
 
-  <div id="footer">
-    Work Timer &middot;
-    <a href="http://boonedocks.net/">boonedocks.net</a> &middot;
-    <a href="http://twitter.com/#!/boonedocks">boonedocks on Twitter</a> &middot;
-    <a href="http://github.com/boone/work_timer">Source Code</a>
-  </div>
+  <ul id="footer" class="menu">
+    <li>Work Timer</li>
+    <li><a href="http://boonedocks.net/">boonedocks.net</a></li>
+    <li><a href="http://twitter.com/#!/boonedocks">boonedocks on Twitter</a></li>
+    <li><a href="http://github.com/boone/work_timer">Source Code</a></li>
+  </ul>
 
 </body>
 </html>
