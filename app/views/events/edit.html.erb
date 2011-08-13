@@ -1,5 +1,7 @@
-<%= link_to 'Events', events_path %> &raquo;
-<%= link_to "Event ##{@event.id}", @event %> &raquo;
+<ol class="path">
+  <li><%= link_to 'Events', events_path %></li>
+  <li><%= link_to "Event ##{@event.id}", @event %></li>
+</ol>
 
 <h1>Edit Event</h1>
 

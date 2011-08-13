@@ -32,3 +32,6 @@ tr.even { background-color: #ccc; }
 tr.odd { background-color: #bbb; }
 #report { overflow: scroll; padding: 10px 0;}
 .no_data { display: none; }
+.path { list-style-type: none; padding: 0; margin: 0; }
+.path li { display: inline; }
+.path li:after { content: " » "; }

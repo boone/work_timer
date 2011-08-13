@@ -1,7 +1,9 @@
-<%= link_to 'Clients', clients_path %> &raquo;
-<%= link_to @client.name, @client %> &raquo;
-<%= link_to 'Projects', client_projects_path(@client) %> &raquo;
-<%= link_to @project.title, client_project_path(@client, @project) %> &raquo;
+<ol class="path">
+  <li><%= link_to 'Clients', clients_path %></li>
+  <li><%= link_to @client.name, @client %></li>
+  <li><%= link_to 'Projects', client_projects_path(@client) %></li>
+  <li><%= link_to @project.title, client_project_path(@client, @project) %></li>
+</ol>
 
 <h1>Edit Project</h1>
 
