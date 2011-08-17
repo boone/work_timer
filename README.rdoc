@@ -8,6 +8,7 @@ Rails 3 project, used to track time worked on projects for a single user.
 * cd work_timer
 * bundle
 * rake db:migrate
+* Set your time zone in config/application.rb
 * rails s
 * Visit http://localhost:3000
 * Create a new client and project, then click New Event to start tracking your time
