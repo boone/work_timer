@@ -1,3 +1,5 @@
+* Move to Rails 3.1
+
 * Show cumulative time for the current day in the top area, on the right
 * Github-style page sliding when changing pages?
 * what about personal projects or projects for small clients with no sub projects? how to make that clean and easy?
