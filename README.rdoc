@@ -2,6 +2,8 @@
 
 Rails 3 project, used to track time worked on projects for a single user.
 
+{<img src="http://travis-ci.org/boone/work-timer.png" />}[http://travis-ci.org/boone/work-timer]
+
 == Setup
 
 * git clone git://github.com/boone/work_timer.git
