@@ -5,6 +5,7 @@
 * what about personal projects or projects for small clients with no sub projects? how to make that clean and easy?
 * Take secret token out of Git?
 * Replace resume/end Javascript confirmation boxes with some sort of popup where you have a chance to edit the event details before clicking OK
+* Project-level reporting
 
 * testing/handling for:
 	* events that overlap midnight <- for now apply hours to start day
