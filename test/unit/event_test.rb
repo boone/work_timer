@@ -22,4 +22,30 @@ class EventTest < ActiveSupport::TestCase
     assert !event.valid?
     assert event.errors[:base]
   end
+  
+  should 'compute zero for daily time when there are no events today' do
+    Factory.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
+    assert_equal 0, Event.time_today
+  end
+  
+  should 'compute correct daily time when there is no current event' do
+    Factory.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
+    Factory.create(:event, :start => Time.now.beginning_of_day, :end => Time.now.beginning_of_day + 1.hour) # 1 hour
+    Factory.create(:event, :start => Time.now.beginning_of_day + 2.hours, :end => Time.now.beginning_of_day + 3.hours) # 1.hour
+    assert_equal 2, Event.today.count
+    assert_equal 2.hours, Event.time_today
+  end
+
+  should 'compute correct daily time when there is a current event' do
+    Factory.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
+    Factory.create(:event, :start => Time.now.beginning_of_day, :end => Time.now.beginning_of_day + 1.hour) # 1 hour
+    Factory.create(:event, :start => Time.now.beginning_of_day, :end => nil)
+
+    assert_equal 2, Event.today.count
+    
+    # Time.now calls at different stages will not be exact, so assert the results are the same to thousandths of an hour
+    expected_time = ((1.hour + (Time.now - Time.now.beginning_of_day)) / 3.6).to_i
+    actual_time = (Event.time_today / 3.6).to_i
+    assert_equal expected_time, actual_time
+  end
 end

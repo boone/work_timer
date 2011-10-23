@@ -8,5 +8,10 @@ class ApplicationController < ActionController::Base
   def current_events
     @current_events = Event.current
   end
-  helper_method :current_events
+  
+  def time_today
+    @time_today = Event.time_today
+  end
+
+  helper_method :current_events, :time_today
 end

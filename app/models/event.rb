@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   default_scope order('start DESC')
   scope :current, where('end IS NULL').order('start DESC')
   scope :completed, where('end IS NOT NULL').order('end DESC')
+  scope :today, where('start > ? AND start < ?', Time.now.beginning_of_day, Time.now.end_of_day)
   
   validates_presence_of :project
   validates_presence_of :start
@@ -44,5 +45,11 @@ class Event < ActiveRecord::Base
   
   def expanded_title
     "#{self.project.client.name}: #{self.project.title}"
+  end
+  
+  def self.time_today
+    sum = 0.0
+    self.today.each { |e| sum += (e.end.nil? ? Time.now : e.end) - e.start }
+    sum
   end
 end

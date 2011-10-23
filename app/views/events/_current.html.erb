@@ -13,6 +13,14 @@
       <strong>Started:</strong> <%= event.start.strftime('%H:%M') %><br />
       <strong>Comment:</strong> <%= truncate(event.comment, :length => 30, :separator => ' ') %>
     </div>
+    <div class="daily_total">
+      <div class="start_stop">
+        Daily Total
+      </div>
+      <div class="time">
+        <%= number_with_precision(time_today / 3600, :precision => 2) %>
+      </div>
+    </div>
   <% end %>
 <% else %>
   <div class="running_time">
@@ -25,6 +33,14 @@
   </div>
   <div class="info">
     <strong>Clock Stopped</strong>
+  </div>
+  <div class="daily_total">
+    <div class="start_stop">
+      Daily Total
+    </div>
+    <div class="time">
+      <%= number_with_precision(time_today / 3600, :precision => 2) %>
+    </div>
   </div>
 <% end %>
 

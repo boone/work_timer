@@ -8,10 +8,12 @@ a:hover { text-decoration: underline; background-color: transparent; }
 #content { padding: 15px auto; }
 #status { height: 65px; font-size: 14px; }
 #flash { color: green; margin-bottom: 10px; }
-.running_time { width: 150px; text-align: center; padding: 0 10px 0 10px; margin: 0; float: left; }
+.running_time, .daily_total { width: 150px; text-align: center; padding: 0 10px 0 10px; margin: 0; float: left; }
+.daily_total { color: #555; }
 .start_stop { padding: 0 0 5px 0; margin: 0; }
+.daily_total .start_stop { font-style: italic; }
 .time { font-size: 40px; line-height: 42px; }
-.info { float: left; overflow: hidden; width: 520px; padding: 5px 10px 5px 0; white-space: nowrap; }
+.info { float: left; overflow: hidden; width: 350px; padding: 5px 10px 5px 0; white-space: nowrap; }
 h1 { font-size: 20px; }
 h2 { font-size: 17px; }
 #footer { font-size: 10px; color: #ddd; padding: 0 10px;}
