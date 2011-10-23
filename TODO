@@ -5,6 +5,9 @@
 * Take secret token out of Git?
 * Replace resume/end Javascript confirmation boxes with some sort of popup where you have a chance to edit the event details before clicking OK
 * Project-level reporting
+* Remove time math from views and controllers as much as possible
+* DRY up the events/_current.html.erb partial
+* Some way to stop the timer with a keyboard shortcut?
 
 * testing/handling for:
 	* events that overlap midnight <- for now apply hours to start day
