@@ -114,7 +114,7 @@ class EventsController < ApplicationController
   end
   
   def current
-    current_events = Event.current
+    #current_events = Event.current
     render :partial => 'events/current', :current_events => current_events
   end
 end
