@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Work Timer</title>
+  <title><% if current_events.size > 0 %><%= number_with_precision((Time.now - current_events.first.start) / 3600, :precision => 2) %> - <% end %>Work Timer</title>
   <%= stylesheet_link_tag 'scaffold', 'main' %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
