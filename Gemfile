@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.12'
+gem 'rails', '3.0.13'
 gem "jquery-rails"
 gem 'sqlite3'
 gem 'kaminari'
