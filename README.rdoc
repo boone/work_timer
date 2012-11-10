@@ -2,7 +2,7 @@
 
 Rails 3 project, used to track time worked on projects for a single user.
 
-{<img src="http://travis-ci.org/boone/work_timer.png" />}[http://travis-ci.org/boone/work_timer]
+{<img src="https://travis-ci.org/boone/work_timer.png" />}[https://travis-ci.org/boone/work_timer]
 
 == Setup
 
