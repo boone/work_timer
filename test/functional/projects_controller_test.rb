@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
-    @project = Factory.create(:project)
+    @project = FactoryGirl.create(:project)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class ProjectsControllerTest < ActionController::TestCase
   end
   
   test "should create project" do
-    new_project = Factory.build(:project, :title => 'New Project')
+    new_project = FactoryGirl.build(:project, :title => 'New Project')
     assert_difference('Project.count') do
       post :create, :client_id => new_project.client, :project => new_project.attributes
     end

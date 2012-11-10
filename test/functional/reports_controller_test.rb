@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ReportsControllerTest < ActionController::TestCase
   setup do
-    @client = Factory.create(:event).project.client
+    @client = FactoryGirl.create(:event).project.client
   end
   
   test 'should show report' do

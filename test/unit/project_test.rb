@@ -6,7 +6,7 @@ class ProjectTest < ActiveSupport::TestCase
   should validate_presence_of(:title)
 
   should 'not be destroyable if there are events' do
-    event = Factory.create(:event)
+    event = FactoryGirl.create(:event)
     project = event.project
     assert_raise(ActiveRecord::DeleteRestrictionError) { project.destroy }
     assert !project.destroyed?, 'check for !project.destroyed?'

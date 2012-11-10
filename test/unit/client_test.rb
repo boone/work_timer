@@ -5,7 +5,7 @@ class ClientTest < ActiveSupport::TestCase
   should validate_presence_of(:name)
   
   should 'not be destroyable if there are projects' do
-    project = Factory.create(:project)
+    project = FactoryGirl.create(:project)
     client = project.client
     assert_raise(ActiveRecord::DeleteRestrictionError) { client.destroy }
     assert !client.destroyed?, 'check for !client.destroyed?'

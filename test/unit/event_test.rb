@@ -6,40 +6,40 @@ class EventTest < ActiveSupport::TestCase
   should validate_presence_of(:start)
   
   should 'allow start time before end time' do
-    event = Factory.build(:event, :start => 1.hour.ago, :end => Time.now)
+    event = FactoryGirl.build(:event, :start => 1.hour.ago, :end => Time.now)
     assert event.valid?
   end
   
   should 'not allow start time after end time' do
-    event = Factory.build(:event, :end => 1.hour.ago, :start => Time.now)
+    event = FactoryGirl.build(:event, :end => 1.hour.ago, :start => Time.now)
     assert !event.valid?
     assert event.errors[:end]
   end
   
   should 'not allow multiple current events' do
-    current_event = Factory.build(:event, :end => nil)
+    current_event = FactoryGirl.build(:event, :end => nil)
     event = Event.new(:start => Time.now, :comment => 'Second event')
     assert !event.valid?
     assert event.errors[:base]
   end
   
   should 'compute zero for daily time when there are no events today' do
-    Factory.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
+    FactoryGirl.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
     assert_equal 0, Event.time_today
   end
   
   should 'compute correct daily time when there is no current event' do
-    Factory.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
-    Factory.create(:event, :start => Time.now.beginning_of_day, :end => Time.now.beginning_of_day + 1.hour) # 1 hour
-    Factory.create(:event, :start => Time.now.beginning_of_day + 2.hours, :end => Time.now.beginning_of_day + 3.hours) # 1.hour
+    FactoryGirl.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
+    FactoryGirl.create(:event, :start => Time.now.beginning_of_day, :end => Time.now.beginning_of_day + 1.hour) # 1 hour
+    FactoryGirl.create(:event, :start => Time.now.beginning_of_day + 2.hours, :end => Time.now.beginning_of_day + 3.hours) # 1.hour
     assert_equal 2, Event.today.count
     assert_equal 2.hours, Event.time_today
   end
 
   should 'compute correct daily time when there is a current event' do
-    Factory.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
-    Factory.create(:event, :start => Time.now.beginning_of_day, :end => Time.now.beginning_of_day + 1.hour) # 1 hour
-    Factory.create(:event, :start => Time.now.beginning_of_day, :end => nil)
+    FactoryGirl.create(:event, :start => 1.day.ago.beginning_of_day, :end => 1.day.ago.beginning_of_day + 1.hour) # yesterday
+    FactoryGirl.create(:event, :start => Time.now.beginning_of_day, :end => Time.now.beginning_of_day + 1.hour) # 1 hour
+    FactoryGirl.create(:event, :start => Time.now.beginning_of_day, :end => nil)
 
     assert_equal 2, Event.today.count
     
