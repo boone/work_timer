@@ -51,16 +51,16 @@ class EventTest < ActiveSupport::TestCase
   
   should 'be able to resume a completed event' do
     original_event      = FactoryGirl.create(:event)
-    original_start_time = original_event.start
-    original_end_time   = original_event.end
+    original_start_time = original_event.start.to_i # typecast to avoid nanosecond comparions
+    original_end_time   = original_event.end.to_i   # typecast to avoid nanosecond comparions
     assert_equal 1, Event.count
     
     original_event.resume!
     original_event.reload
 
     # test that the original event's times have not been modified
-    assert_equal original_start_time, original_event.start
-    assert_equal original_end_time, original_event.end
+    assert_equal original_start_time, original_event.start.to_i
+    assert_equal original_end_time, original_event.end.to_i
     
     # test that the original event and the new event are present
     assert_equal 2, Event.count
