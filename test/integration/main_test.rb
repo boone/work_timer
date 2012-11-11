@@ -18,7 +18,7 @@ class MainTest < ActionController::IntegrationTest
     fill_in 'Comment', :with => 'Yo'
     click_button 'Create Event'
     assert page.has_content?('Event was successfully created.'), 'checking for Event was successfully created on page'
-    save_and_open_page
+    # save_and_open_page
   end
   
   should 'have no existing clients' do
