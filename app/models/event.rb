@@ -34,7 +34,7 @@ class Event < ActiveRecord::Base
   def resume!
     # only allow ended events to be resumed
     if self.end
-      new_event = self.clone
+      new_event = self.dup
       new_event.start = Time.now
       new_event.end = nil
       new_event.save
