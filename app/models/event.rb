@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   default_scope order('start DESC')
   scope :current, where('end IS NULL').order('start DESC')
   scope :completed, where('end IS NOT NULL').order('end DESC')
-  scope :today, where('start >= ? AND start <= ?', Time.now.beginning_of_day, Time.now.end_of_day)
+  scope :today, lambda { where('start >= ? AND start <= ?', Time.now.beginning_of_day, Time.now.end_of_day) }
   
   validates_presence_of :project
   validates_presence_of :start
