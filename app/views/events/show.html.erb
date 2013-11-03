@@ -6,7 +6,7 @@
 
 <ul class="menu">
   <li><%= link_to 'Edit', edit_event_path(@event) %></li>
-  <li><%= link_to 'Delete', @event, :method => :delete, :confirm => 'Are you sure?' %></li>
+  <li><%= link_to 'Delete', @event, method: :delete, data: { confirm: 'Are you sure?' } %></li>
 </li>
 
 <p><b>Client:</b> <%= link_to @event.project.client.name, @event.project.client %></p>

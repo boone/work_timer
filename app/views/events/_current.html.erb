@@ -2,7 +2,7 @@
   <% current_events.each do |event| %>
     <div class="running_time">
       <div class="start_stop">
-        <%= link_to 'Stop', stop_event_path(event), :confirm => 'Are you sure you want to stop this event?', :method => :put %>
+        <%= link_to 'Stop', stop_event_path(event), data: { confirm: 'Are you sure you want to stop this event?' }, method: :patch %>
       </div>
       <div class="time">
         <%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %>

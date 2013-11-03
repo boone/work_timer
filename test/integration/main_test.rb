@@ -2,14 +2,14 @@ require 'test_helper'
 
 # TODO move this block to another helper
 require "capybara/rails"
- 
-module ActionController
+
+module ActionDispatch
   class IntegrationTest
     include Capybara::DSL
   end
 end
 
-class MainTest < ActionController::IntegrationTest
+class MainTest < ActionDispatch::IntegrationTest
   should 'be able to start an event' do
     FactoryGirl.create(:project, :title => 'One Project') # form needs a project
     visit '/events'
@@ -20,12 +20,12 @@ class MainTest < ActionController::IntegrationTest
     assert page.has_content?('Event was successfully created.'), 'checking for Event was successfully created on page'
     # save_and_open_page
   end
-  
+
   should 'have no existing clients' do
     visit '/clients'
     assert page.has_content?('No existing clients'), 'checking for No existing clients'
   end
-  
+
   should 'not permit a project to be deleted if it has events' do
     event = FactoryGirl.create(:event)
     visit client_project_path(event.project.client, event.project)
@@ -49,7 +49,7 @@ class MainTest < ActionController::IntegrationTest
     visit client_path(client)
     assert page.has_content?('Delete')
   end
-  
+
   should 'create a new client' do
     client_name = 'Bar Inc.'
     visit clients_path
@@ -84,7 +84,7 @@ class MainTest < ActionController::IntegrationTest
 
   should 'only allow one current event' do
     current_event = FactoryGirl.create(:event, :end => nil)
-    
+
     visit new_event_path
     fill_in 'Comment', :with => 'Second running event'
     click_button 'Create Event'

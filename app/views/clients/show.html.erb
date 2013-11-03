@@ -10,7 +10,7 @@
   <li>Reports: <%= link_to 'Weekly', client_report_path(@client, :grouping => 'week')%> /
   <%= link_to 'Monthly', client_report_path(@client, :grouping => 'month')%></li>
   <% if @client.projects.size == 0 %>
-    <li><%= link_to 'Delete', @client, :method => :delete, :confirm => 'Are you sure?' %></li>
+    <li><%= link_to 'Delete', @client, method: :delete, data: { confirm: 'Are you sure?' } %></li>
   <% end %>
 </ul>
 

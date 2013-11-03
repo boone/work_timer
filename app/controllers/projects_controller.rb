@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.xml
   def index
-    @projects = @client.projects.all
+    @projects = @client.projects
 
     respond_to do |format|
       format.html # index.html.erb
