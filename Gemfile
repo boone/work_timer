@@ -4,6 +4,7 @@ gem 'rails', '4.0.1'
 gem "jquery-rails"
 gem 'sqlite3'
 gem 'kaminari'
+gem 'turbolinks'
 
 group :test do
   gem 'shoulda'

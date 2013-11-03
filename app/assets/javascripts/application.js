@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require turbolinks
 //= require_self
 
 $(function() {
@@ -14,8 +15,8 @@ $(function() {
       $('#flash').slideUp();
     }, 10000);
   }
+});
 
-  $('#exclude').click(function() {
-    $('#report').find('.no_data').toggle();
-  });
+$(document).on('click', '#exclude', function() {
+  $('#report').find('.no_data').toggle();
 });
