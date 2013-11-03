@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.xml
   def create
-    @project = @client.projects.build(params[:project])
+    @project = @client.projects.build(project_params)
 
     respond_to do |format|
       if @project.save
@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
     @project = @client.projects.find(params[:id])
 
     respond_to do |format|
-      if @project.update_attributes(params[:project])
+      if @project.update_attributes(project_params)
         format.html { redirect_to([@client, @project], :notice => 'Project was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -91,7 +91,12 @@ class ProjectsController < ApplicationController
   end
   
   private
-    def set_client
-      @client = Client.find(params[:client_id])
-    end
+
+  def set_client
+    @client = Client.find(params[:client_id])
+  end
+
+  def project_params
+    params.require(:project).permit(:title, :client_id)
+  end
 end

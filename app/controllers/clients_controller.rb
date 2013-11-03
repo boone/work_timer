@@ -41,7 +41,7 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.xml
   def create
-    @client = Client.new(params[:client])
+    @client = Client.new(client_params)
 
     respond_to do |format|
       if @client.save
@@ -60,7 +60,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
 
     respond_to do |format|
-      if @client.update_attributes(params[:client])
+      if @client.update_attributes(client_params)
         format.html { redirect_to(@client, :notice => 'Client was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -86,5 +86,11 @@ class ClientsController < ApplicationController
       # could handle ActiveRecord::DeleteRestrictionError specially, but the error message is fine
       redirect_to @client, :notice => "#{e}."
     end
+  end
+
+  private
+
+  def client_params
+    params.require(:client).permit(:name)
   end
 end

@@ -40,7 +40,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-    @event = Event.new(params[:event])
+    @event = Event.new(event_parms)
 
     respond_to do |format|
       if @event.save
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      if @event.update_attributes(event_parms)
         format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -116,5 +116,11 @@ class EventsController < ApplicationController
   def current
     #current_events = Event.current
     render :partial => 'events/current', :current_events => current_events
+  end
+
+  private
+
+  def event_parms
+    params.require(:event).permit(:start, :end, :comment, :project_id)
   end
 end
