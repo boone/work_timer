@@ -1,3 +1,7 @@
+//= require jquery
+//= require jquery_ujs
+//= require_self
+
 $(function() {
   setInterval(function() {
     $.get('/events/current', function(data) {
@@ -10,7 +14,7 @@ $(function() {
       $('#flash').slideUp();
     }, 10000);
   }
-  
+
   $('#exclude').click(function() {
     $('#report').find('.no_data').toggle();
   });
