@@ -2,4 +2,4 @@ language: ruby
 rvm:
   - 1.9.3
   - 2.0.0
-script: "bundle exec rake db:drop db:create db:migrate test"
+script: "bundle exec rake setup_from_samples db:drop db:create db:migrate test"
