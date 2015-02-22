@@ -1,6 +1,6 @@
 class Client < ActiveRecord::Base
   has_many :projects, dependent: :restrict_with_exception
-  has_many :events, :through => :projects
+  has_many :events, through: :projects
 
   default_scope -> { order('LOWER(name) ASC') }
   validates_presence_of :name

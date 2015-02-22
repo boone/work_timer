@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><% if current_events.size > 0 %><%= number_with_precision((Time.now - current_events.first.start) / 3600, :precision => 2) %> - <% end %>Work Timer</title>
+  <title><% if current_events.size > 0 %><%= number_with_precision((Time.now - current_events.first.start) / 3600, precision: 2) %> - <% end %>Work Timer</title>
   <%= stylesheet_link_tag :application %>
   <%= javascript_include_tag :application %>
   <%= csrf_meta_tag %>
@@ -12,7 +12,7 @@
   <% end %>
 
   <div id="status">
-    <%= render 'events/current', :current_events => current_events %>
+    <%= render 'events/current', current_events: current_events %>
   </div>
   
   <ul id="main" class="menu">
@@ -30,6 +30,5 @@
     <li><a href="http://twitter.com/#!/boonedocks">boonedocks on Twitter</a></li>
     <li><a href="http://github.com/boone/work_timer">Source Code</a></li>
   </ul>
-
 </body>
 </html>

@@ -19,8 +19,8 @@
       <td><%= event.start.strftime('%a, %b %d') %></td>
       <td><%= event.start.strftime('%H:%M') %></td>
       <td><%= event.end.strftime('%H:%M') %></td>
-      <td class="hours"><%= number_with_precision((event.end - event.start) / 3600, :precision => 2) %></td>
-      <td><%= truncate(event.comment, :length => 25, :separator => ' ') %></td>
+      <td class="hours"><%= number_with_precision((event.end - event.start) / 3600, precision: 2) %></td>
+      <td><%= truncate(event.comment, length: 25, separator: ' ') %></td>
       <td>
         <% if current_events.size == 0 %>
           <%= link_to 'Resume', resume_event_path(event), data: { confirm: 'Are you sure?' }, method: :post %>

@@ -4,11 +4,11 @@
 
 <p>
   <% if @grouping == 'month' %>
-    <%= link_to "< #{@previous_range.strftime('%b')}", client_report_path(@client, :grouping => @grouping, :date => @previous_range) %> &mdash;
-    <%= link_to "#{@next_range.strftime('%b')} >", client_report_path(@client, :grouping => @grouping, :date => @next_range) %>
+    <%= link_to "< #{@previous_range.strftime('%b')}", client_report_path(@client, grouping: @grouping, date: @previous_range) %> &mdash;
+    <%= link_to "#{@next_range.strftime('%b')} >", client_report_path(@client, grouping: @grouping, date: @next_range) %>
   <% else %>
-    <%= link_to "< #{@previous_range.strftime('%b %d')}", client_report_path(@client, :grouping => @grouping, :date => @previous_range) %> &mdash;
-    <%= link_to "#{@next_range.strftime('%b %d')} >", client_report_path(@client, :grouping => @grouping, :date => @next_range) %>
+    <%= link_to "< #{@previous_range.strftime('%b %d')}", client_report_path(@client, grouping: @grouping, date: @previous_range) %> &mdash;
+    <%= link_to "#{@next_range.strftime('%b %d')} >", client_report_path(@client, grouping: @grouping, date: @next_range) %>
   <% end %>
 </p>
 
@@ -35,11 +35,11 @@
         <% @date_range.each do |day| %>
           <td class="hours<% unless @report['totals']["#{day.to_s}"] %> no_data<% end %>">
             <% if @report['totals']["#{day.to_s}"] %>
-              <%= number_with_precision(@report['totals']["#{day.to_s}"] / 3600, :precision => 2) %>
+              <%= number_with_precision(@report['totals']["#{day.to_s}"] / 3600, precision: 2) %>
             <% end %>
           </td>
         <% end %>
-        <th class="hours"><%= number_with_precision(@report['totals'].values.inject(:+) / 3600, :precision => 2)%></th>
+        <th class="hours"><%= number_with_precision(@report['totals'].values.inject(:+) / 3600, precision: 2)%></th>
         </tr>
     </tfoot>
     <tbody>
@@ -50,11 +50,11 @@
             <% @date_range.each do |day| %>
               <td class="hours<% unless @report['totals']["#{day.to_s}"] %> no_data<% end %>">
                 <% if @report[project.id]["#{day.to_s}"] %>
-                  <%= number_with_precision(@report[project.id]["#{day.to_s}"] / 3600, :precision => 2) %>
+                  <%= number_with_precision(@report[project.id]["#{day.to_s}"] / 3600, precision: 2) %>
                   <% end %>
               </td>
             <% end %>
-            <th class="hours"><%= number_with_precision(@report[project.id].values.inject(:+) / 3600, :precision => 2) %></th>
+            <th class="hours"><%= number_with_precision(@report[project.id].values.inject(:+) / 3600, precision: 2) %></th>
           </tr>
         <% end %>
       <% end %>

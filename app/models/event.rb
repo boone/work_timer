@@ -10,7 +10,7 @@ class Event < ActiveRecord::Base
   validates_presence_of :start
 
   validate :check_start_and_end
-  validate :only_one_current_event, :on => :create
+  validate :only_one_current_event, on: :create
 
   def check_start_and_end
     if self.end.present?
@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
   
   def stop!
     if self.end.nil?
-      update_attributes(:end => Time.now)
+      update_attributes(end: Time.now)
       true
     else
       false

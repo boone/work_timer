@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @clients }
+      format.xml  { render xml: @clients }
     end
   end
 
@@ -18,7 +18,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @client }
+      format.xml  { render xml: @client }
     end
   end
 
@@ -29,7 +29,7 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @client }
+      format.xml  { render xml: @client }
     end
   end
 
@@ -45,11 +45,11 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to(@client, :notice => 'Client was successfully created.') }
-        format.xml  { render :xml => @client, :status => :created, :location => @client }
+        format.html { redirect_to(@client, notice: 'Client was successfully created.') }
+        format.xml  { render xml: @client, status: :created, location: @client }
       else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
+        format.html { render action: "new" }
+        format.xml  { render xml: @client.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -61,11 +61,11 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(client_params)
-        format.html { redirect_to(@client, :notice => 'Client was successfully updated.') }
+        format.html { redirect_to(@client, notice: 'Client was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
+        format.html { render action: "edit" }
+        format.xml  { render xml: @client.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -79,12 +79,12 @@ class ClientsController < ApplicationController
       @client.destroy
 
       respond_to do |format|
-        format.html { redirect_to(clients_url, :notice => 'Client was deleted.') }
+        format.html { redirect_to(clients_url, notice: 'Client was deleted.') }
         format.xml  { head :ok }
       end
     rescue Exception => e
       # could handle ActiveRecord::DeleteRestrictionError specially, but the error message is fine
-      redirect_to @client, :notice => "#{e}."
+      redirect_to @client, notice: "#{e}."
     end
   end
 
