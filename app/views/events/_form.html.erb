@@ -13,17 +13,17 @@
 
   <div class="field">
     <%= f.label :project_id, 'Project' %><br />
-    <%= f.select :project_id, Project.all.collect {|p| [ "#{p.client.name}: #{p.title}", p.id ] }.sort, { :include_blank => false } %>
+    <%= f.select :project_id, Project.all.collect {|p| [ "#{p.client.name}: #{p.title}", p.id ] }.sort, { include_blank: false } %>
   </div>
 
   <div class="field">
     <%= f.label :start %><br />
-    <%= f.datetime_select :start, :include_seconds => true %>
+    <%= f.datetime_select :start, include_seconds: true %>
   </div>
   <% if !@event.new_record? %>
   <div class="field">
     <%= f.label :end %><br />
-    <%= f.datetime_select :end, :include_seconds => true %>
+    <%= f.datetime_select :end, include_seconds: true %>
   </div>
   <% end %>
   <div class="field">

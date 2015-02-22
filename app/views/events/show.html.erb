@@ -30,9 +30,9 @@
 <p>
   <b>Hours:</b>
   <% if @event.end.present? %>
-    <%= number_with_precision((@event.end - @event.start) / 3600, :precision => 2) %>
+    <%= number_with_precision((@event.end - @event.start) / 3600, precision: 2) %>
   <% else %>
-    <%= number_with_precision((Time.now - @event.start) / 3600, :precision => 2) %>
+    <%= number_with_precision((Time.now - @event.start) / 3600, precision: 2) %>
   <% end %>
 </p>
 

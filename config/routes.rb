@@ -11,10 +11,10 @@ WorkTimer::Application.routes.draw do
 
   resources :clients do
     resources :projects do
-      resource :report, :only => :show
+      resource :report, only: :show
     end
-    resource :report, :only => :show
+    resource :report, only: :show
   end
 
-  root :to => "events#index"
+  root to: "events#index"
 end

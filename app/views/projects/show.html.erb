@@ -33,9 +33,9 @@
       <td><% if !event.end.nil? %><%= event.end.to_s(:short) %><% else %>Ongoing<% end %></td>
       <td class="hours">
         <% end_time = event.end || Time.now %>
-        <%= number_with_precision((end_time - event.start) / 3600, :precision => 2) %>
+        <%= number_with_precision((end_time - event.start) / 3600, precision: 2) %>
       </td>
-      <td><%= truncate(event.comment, :length => 25, :separator => ' ') %></td>
+      <td><%= truncate(event.comment, length: 25, separator: ' ') %></td>
       <td><%= link_to 'Show', event %></td>
     </tr>
   <% end %>
@@ -43,4 +43,3 @@
 <% else %>
   <p>No recent events!</p>
 <% end %>
-

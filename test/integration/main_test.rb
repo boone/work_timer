@@ -11,11 +11,11 @@ end
 
 class MainTest < ActionDispatch::IntegrationTest
   should 'be able to start an event' do
-    FactoryGirl.create(:project, :title => 'One Project') # form needs a project
+    FactoryGirl.create(:project, title: 'One Project') # form needs a project
     visit '/events'
     click_link 'New Event'
     assert page.has_content?('New Event'), 'checking for New event on page'
-    fill_in 'Comment', :with => 'Yo'
+    fill_in 'Comment', with: 'Yo'
     click_button 'Create Event'
     assert page.has_content?('Event was successfully created.'), 'checking for Event was successfully created on page'
     # save_and_open_page
@@ -54,7 +54,7 @@ class MainTest < ActionDispatch::IntegrationTest
     client_name = 'Bar Inc.'
     visit clients_path
     click_link 'New'
-    fill_in 'Name', :with => client_name
+    fill_in 'Name', with: client_name
     click_button 'Create Client'
     assert page.has_content?('Client was successfully created.')
     assert page.has_content?(client_name)
@@ -65,7 +65,7 @@ class MainTest < ActionDispatch::IntegrationTest
     client = FactoryGirl.create(:client)
     visit client_projects_path(client)
     click_link 'New'
-    fill_in 'Title', :with => project_name
+    fill_in 'Title', with: project_name
     click_button 'Create Project'
     assert page.has_content?('Project was successfully created.')
     assert page.has_content?(project_name)
@@ -75,7 +75,7 @@ class MainTest < ActionDispatch::IntegrationTest
     project = FactoryGirl.create(:project)
     visit events_path
     click_link 'New Event'
-    fill_in 'Comment', :with => 'Details'
+    fill_in 'Comment', with: 'Details'
     click_button 'Create Event'
     assert page.has_content?('Event was successfully created.')
     click_link 'Stop'
@@ -83,10 +83,10 @@ class MainTest < ActionDispatch::IntegrationTest
   end
 
   should 'only allow one current event' do
-    current_event = FactoryGirl.create(:event, :end => nil)
+    current_event = FactoryGirl.create(:event, end: nil)
 
     visit new_event_path
-    fill_in 'Comment', :with => 'Second running event'
+    fill_in 'Comment', with: 'Second running event'
     click_button 'Create Event'
     assert page.has_content?('Cannot start a new current event while another is running')
   end

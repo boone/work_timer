@@ -5,20 +5,20 @@
         <%= link_to 'Stop', stop_event_path(event), data: { confirm: 'Are you sure you want to stop this event?' }, method: :patch %>
       </div>
       <div class="time">
-        <%= number_with_precision((Time.now - event.start) / 3600, :precision => 2) %>
+        <%= number_with_precision((Time.now - event.start) / 3600, precision: 2) %>
       </div>
     </div>
     <div class="info">
       <strong><%= link_to event.expanded_title, event %></strong><br />
       <strong>Started:</strong> <%= event.start.strftime('%H:%M') %><br />
-      <strong>Comment:</strong> <%= truncate(event.comment, :length => 30, :separator => ' ') %>
+      <strong>Comment:</strong> <%= truncate(event.comment, length: 30, separator: ' ') %>
     </div>
     <div class="daily_total">
       <div class="start_stop">
         Daily Total
       </div>
       <div class="time">
-        <%= number_with_precision(time_today / 3600, :precision => 2) %>
+        <%= number_with_precision(time_today / 3600, precision: 2) %>
       </div>
     </div>
   <% end %>
@@ -39,8 +39,7 @@
       Daily Total
     </div>
     <div class="time">
-      <%= number_with_precision(time_today / 3600, :precision => 2) %>
+      <%= number_with_precision(time_today / 3600, precision: 2) %>
     </div>
   </div>
 <% end %>
-
