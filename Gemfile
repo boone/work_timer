@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.2'
 gem "jquery-rails"
 gem 'coffee-rails'
 gem 'sqlite3'
