@@ -19,7 +19,7 @@ Rails 4.2 project, used to track time worked on projects for a single user.
 It also works well on a Mac using the Pow server (http://pow.cx).
 
 This app was meant to be run locally on a development system. If you intend to run it on the web,
-you should use your own database.yml and secret_token.rb. And add your own authentication layer.
+you should use your own database.yml and secrets.yml. And add your own authentication layer.
 
 == Contact
 

@@ -6,13 +6,12 @@ task :setup_from_samples do
   FileUtils.cp "#{config_path}/database.yml.sample",
     "#{config_path}/database.yml"
 
-  # config/initializers/secret_token.rb
-  FileUtils.cp "#{config_path}/initializers/secret_token.rb.sample",
-    "#{config_path}/initializers/secret_token.rb"
+  # config/secrets.yml
+  FileUtils.cp "#{config_path}/secrets.yml.sample",
+    "#{config_path}/secrets.yml"
 
   puts <<EOS
 Remember to update the content in config/database.yml and
-config/initializers/secret_token.rb before you use them in
-production!
+config/secrets.yml before you use them in production!
 EOS
 end
