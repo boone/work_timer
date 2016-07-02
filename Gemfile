@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.0.0'
 gem "jquery-rails"
 gem 'coffee-rails'
 gem 'sqlite3'
 gem 'kaminari'
-gem 'turbolinks', '~> 2.5.3'
+gem 'turbolinks', '~> 5.0.0'
 
 group :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'rails-perftest'
   gem 'ruby-prof'
+  gem 'rails-controller-testing'
 end

@@ -6,7 +6,7 @@ class ReportsControllerTest < ActionController::TestCase
   end
 
   test 'should show report' do
-    get :show, client_id: @client
+    get :show, params: { client_id: @client.id }
     assert_response :success
     assert_not_nil assigns(:start_date)
     assert_not_nil assigns(:end_date)
