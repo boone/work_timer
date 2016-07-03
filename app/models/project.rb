@@ -1,4 +1,4 @@
-class Project < ActiveRecord::Base
+class Project < ApplicationRecord
   belongs_to :client
   has_many :events, dependent: :restrict_with_exception
   default_scope -> { order('LOWER(title) ASC') }

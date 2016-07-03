@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_filter :set_client
+  before_action :set_client
 
   # GET /projects
   # GET /projects.xml

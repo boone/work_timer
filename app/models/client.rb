@@ -1,4 +1,4 @@
-class Client < ActiveRecord::Base
+class Client < ApplicationRecord
   has_many :projects, dependent: :restrict_with_exception
   has_many :events, through: :projects
 
