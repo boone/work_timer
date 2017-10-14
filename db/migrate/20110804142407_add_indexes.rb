@@ -1,4 +1,4 @@
-class AddIndexes < ActiveRecord::Migration
+class AddIndexes < ActiveRecord::Migration[4.2]
   def self.up
     add_index :projects, :client_id
     add_index :events, :project_id

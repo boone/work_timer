@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.0.1'
+gem 'rails', '5.1.4'
 gem "jquery-rails"
 gem 'coffee-rails'
 gem 'sqlite3'
 gem 'kaminari'
-gem 'turbolinks', '~> 5.0.0'
+gem 'turbolinks', '~> 5.0.1'
 
 group :test do
   gem 'shoulda'
@@ -14,4 +14,8 @@ group :test do
   gem 'launchy'
   gem 'ruby-prof'
   gem 'rails-controller-testing'
+end
+
+group :development do
+  gem 'listen', '~> 3.1.5'
 end
