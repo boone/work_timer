@@ -2,7 +2,7 @@ require 'test_helper'
 
 class EventsControllerTest < ActionController::TestCase
   setup do
-    @event = FactoryGirl.create(:event)
+    @event = FactoryBot.create(:event)
   end
 
   test "should get index" do
@@ -18,7 +18,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should create event" do
-    new_event = FactoryGirl.build(:event, end: nil, comment: 'New Event')
+    new_event = FactoryBot.build(:event, end: nil, comment: 'New Event')
     assert_difference('Event.count') do
       post :create, params: { event: @event.attributes }
     end
@@ -63,7 +63,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test 'should stop' do
-    current_event = FactoryGirl.create(:event, end: nil, comment: 'Current event')
+    current_event = FactoryBot.create(:event, end: nil, comment: 'Current event')
     put :stop, params: { id: current_event.to_param }
     assert_redirected_to events_url
   end

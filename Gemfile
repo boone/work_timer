@@ -9,7 +9,7 @@ gem 'turbolinks', '~> 5.0.1'
 
 group :test do
   gem 'shoulda'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'capybara'
   gem 'launchy'
   gem 'ruby-prof'

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ClientsControllerTest < ActionController::TestCase
   setup do
-    @client = FactoryGirl.create(:client)
+    @client = FactoryBot.create(:client)
   end
 
   test "should get index" do
