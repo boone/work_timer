@@ -11,7 +11,7 @@ end
 
 class MainTest < ActionDispatch::IntegrationTest
   should 'be able to start an event' do
-    FactoryGirl.create(:project, title: 'One Project') # form needs a project
+    FactoryBot.create(:project, title: 'One Project') # form needs a project
     visit '/events'
     click_link 'New Event'
     assert page.has_content?('New Event'), 'checking for New event on page'
@@ -27,25 +27,25 @@ class MainTest < ActionDispatch::IntegrationTest
   end
 
   should 'not permit a project to be deleted if it has events' do
-    event = FactoryGirl.create(:event)
+    event = FactoryBot.create(:event)
     visit client_project_path(event.project.client, event.project)
     assert page.has_no_content?('Delete')
   end
 
   should 'permit a project to be deleted if it has no events' do
-    project = FactoryGirl.create(:project)
+    project = FactoryBot.create(:project)
     visit client_project_path(project.client, project)
     assert page.has_content?('Delete')
   end
 
   should 'not permit a client to be deleted if it has projects' do
-    project = FactoryGirl.create(:project)
+    project = FactoryBot.create(:project)
     visit client_path(project.client)
     assert page.has_no_content?('Delete')
   end
 
   should 'permit a client to be deleted if it has no projects' do
-    client = FactoryGirl.create(:client)
+    client = FactoryBot.create(:client)
     visit client_path(client)
     assert page.has_content?('Delete')
   end
@@ -62,7 +62,7 @@ class MainTest < ActionDispatch::IntegrationTest
 
   should 'create a new project' do
     project_name = 'Difficult Task'
-    client = FactoryGirl.create(:client)
+    client = FactoryBot.create(:client)
     visit client_projects_path(client)
     click_link 'New'
     fill_in 'Title', with: project_name
@@ -72,7 +72,7 @@ class MainTest < ActionDispatch::IntegrationTest
   end
 
   should 'create a new event' do
-    project = FactoryGirl.create(:project)
+    project = FactoryBot.create(:project)
     visit events_path
     click_link 'New Event'
     fill_in 'Comment', with: 'Details'
@@ -83,7 +83,7 @@ class MainTest < ActionDispatch::IntegrationTest
   end
 
   should 'only allow one current event' do
-    current_event = FactoryGirl.create(:event, end: nil)
+    current_event = FactoryBot.create(:event, end: nil)
 
     visit new_event_path
     fill_in 'Comment', with: 'Second running event'
