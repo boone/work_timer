@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.1.4'
+gem 'rails', '5.1.5'
 gem "jquery-rails"
 gem 'coffee-rails'
 gem 'sqlite3'
 gem 'kaminari'
-gem 'turbolinks', '~> 5.0.1'
+gem 'turbolinks', '~> 5.1.0'
 
 group :test do
   gem 'shoulda'
