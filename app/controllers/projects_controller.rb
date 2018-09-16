@@ -84,9 +84,8 @@ class ProjectsController < ApplicationController
         format.html { redirect_to(client_projects_url(@client), notice: 'Project was deleted.') }
         format.xml  { head :ok }
       end
-    rescue Exception => e
-      # could handle ActiveRecord::DeleteRestrictionError specially, but the error message is fine
-      redirect_to client_project_url(@client, @project), notice: "#{e}."
+    rescue ActiveRecord::DeleteRestrictionError
+      redirect_to client_project_url(@client, @project), notice: "Delete was restricted."
     end
   end
 

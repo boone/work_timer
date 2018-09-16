@@ -82,9 +82,8 @@ class ClientsController < ApplicationController
         format.html { redirect_to(clients_url, notice: 'Client was deleted.') }
         format.xml  { head :ok }
       end
-    rescue Exception => e
-      # could handle ActiveRecord::DeleteRestrictionError specially, but the error message is fine
-      redirect_to @client, notice: "#{e}."
+    rescue ActiveRecord::DeleteRestrictionError
+      redirect_to @client, notice: "Delete was restricted."
     end
   end
 
