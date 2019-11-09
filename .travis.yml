@@ -2,7 +2,7 @@ env:
   - SECRET_KEY_BASE=defaceafacade
 language: ruby
 rvm:
-  - 2.3.6
-  - 2.4.3
-  - 2.5.0
+  - 2.4.9
+  - 2.5.7
+  - 2.6.5
 script: "bundle exec rails setup_from_samples db:drop db:create db:migrate test"
