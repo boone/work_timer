@@ -18,9 +18,10 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test "should create project" do
-    new_project = FactoryBot.build(:project, title: 'New Project')
+    client = FactoryBot.create(:client)
+    new_project = FactoryBot.build(:project, title: 'New Project', client: client)
     assert_difference('Project.count') do
-      post :create, params: { client_id: new_project.client,
+      post :create, params: { client_id: client.id,
         project: new_project.attributes }
     end
 
