@@ -1,6 +1,6 @@
 = Work Timer
 
-Rails 5.1 project, used to track time worked on projects for a single user.
+Rails 5.2 project, used to track time worked on projects for a single user.
 
 {<img src="https://travis-ci.org/boone/work_timer.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/boone/work_timer]
 
