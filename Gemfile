@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'rails', '5.1.6.2'
+gem 'rails', '~> 5.2'
 gem "jquery-rails"
 gem 'coffee-rails'
+gem 'sprockets', '~> 3.0'
 gem 'sqlite3'
 gem 'kaminari'
 gem 'turbolinks', '~> 5.1.0'
+gem 'bootsnap', require: false
 
 group :test do
   gem 'shoulda'
