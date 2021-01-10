@@ -1,10 +1,10 @@
-= Work Timer
+# Work Timer
 
 Rails 5.2 project, used to track time worked on projects for a single user.
 
-{<img src="https://travis-ci.org/boone/work_timer.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/boone/work_timer]
+![Build Status](https://travis-ci.org/boone/work_timer.svg?branch=master)
 
-== Setup
+## Setup
 
 * git clone git://github.com/boone/work_timer.git
 * cd work_timer
@@ -21,8 +21,8 @@ It also works well on a Mac using the Pow server (http://pow.cx).
 This app was meant to be run locally on a development system. If you intend to run it on the web,
 you should use your own database.yml and secrets.yml. And add your own authentication layer.
 
-== Contact
+## Contact
 
 http://boonedocks.net
 
-{@boonedocks}[https://twitter.com/boonedocks] on Twitter
+[@boonedocks](https://twitter.com/boonedocks) on Twitter
