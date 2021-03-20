@@ -2,7 +2,7 @@
 
 Rails 5.2 project, used to track time worked on projects for a single user.
 
-![Build Status](https://travis-ci.org/boone/work_timer.svg?branch=master)
+![Build Status](https://travis-ci.org/boone/work_timer.svg?branch=main)
 
 ## Setup
 
